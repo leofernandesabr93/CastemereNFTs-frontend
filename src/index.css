@@ -1,0 +1,5 @@
+body {
+  background: linear-gradient(to bottom, rgb(17, 16, 17), rgb(174, 9, 9));
+  background-size: cover;
+  background-attachment: fixed; /* Opcional, para fijar el fondo */
+}
