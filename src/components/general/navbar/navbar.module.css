@@ -1,0 +1,10 @@
+
+.icons {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  margin: 0rem .6rem;
+}
+.icons:hover {
+  color: rgb(222, 106, 106);
+}
