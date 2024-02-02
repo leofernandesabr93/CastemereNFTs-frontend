@@ -14,21 +14,21 @@ const Navbar = () => {
 
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a className={` ${links}`} href="/">Home</a>
+                <a className={`${links}`} href="/">Home</a>
               </li>
               <li className="nav-item">
-                <a className={` ${links}`} href="#">Destacado</a>
+                <a className={`${links}`} href="#">Destacado</a>
               </li>
               <li className="nav-item">
-                <a className={` ${links}`} href="#">Contacto</a>
+                <a className={`${links}`} href="#">Contacto</a>
               </li>
             </ul>
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className={` ${icons}`} href="#"><i class="bi bi-star"></i></a>
+                <a className={`${icons}`} href="#"><i className="bi bi-star"></i></a>
               </li>
               <li className="nav-item">
-                <a className={` ${icons}`} href="#"><i className="bi bi-cart"></i></a>
+                <a className={`${icons}`} href="#"><i className="bi bi-cart"></i></a>
               </li>
 
             </ul>
