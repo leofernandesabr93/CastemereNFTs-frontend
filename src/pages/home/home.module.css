@@ -1,0 +1,12 @@
+
+.containerCustom {
+  width: 100%;
+}
+
+@media (min-width: 1000px) {
+  .containerCustom {
+    width: 85%;
+  }
+
+
+}
