@@ -1,10 +1,37 @@
+.navbar {
+  padding: 7px 0px;
+  background-color: rgba(10, 10, 10, 0.721);
+}
 
-.icons {
+.links {
+  margin: 0rem .9rem;
+  font-size: 15px;
+  font-weight: 400;
   text-decoration: none;
   color: white;
+}
+.links:hover {
+  color: rgb(222, 89, 89);
+}
+
+.icons {
+  margin: 0rem .9rem;
   font-size: 18px;
-  margin: 0rem .6rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
 }
 .icons:hover {
-  color: rgb(222, 106, 106);
+  color: rgb(222, 89, 89);
+}
+
+.button {
+  padding: 10px;
+  margin: 0rem .6rem;
+  border-radius: 13px;
+  font-size: 17px;
+  text-decoration: none;
+  background-color: rgb(237, 66, 66);
+  color: white;
+  
 }
