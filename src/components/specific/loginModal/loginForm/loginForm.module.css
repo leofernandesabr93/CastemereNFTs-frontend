@@ -1,0 +1,17 @@
+
+.input {
+  border: none;
+  border-bottom: 2px solid rgb(155, 28, 28);
+  color: rgb(30, 30, 30);
+  background-color: rgba(10, 8, 8, 0);
+}
+
+.buttonCustom{
+  border: none;
+  padding: 10px 30px;
+  color: white;
+  background-color:rgb(232, 25, 25) ;
+}
+.buttonCustom:hover{
+  background-color: rgb(224, 77, 77);
+}

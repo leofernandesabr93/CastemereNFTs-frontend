@@ -1,7 +1,7 @@
 import React from 'react'
 import Carrousel from '../../components/specific/carrousel/Carrousel'
 import { containerCustom } from './home.module.css'
-import LoginForm from '../../components/specific/loginForm/LoginForm'
+import LoginModal from '../../components/specific/loginModal/LoginModal'
 
 const Home = () => {
   return (
