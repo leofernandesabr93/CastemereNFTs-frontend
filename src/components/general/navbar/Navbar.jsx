@@ -1,7 +1,12 @@
 import React from 'react'
-import { icons, navbar, button, links } from '../navbar/navbar.module.css'
+import { icons, navbar, links, active } from '../navbar/navbar.module.css'
+import '../navbar/navbar.module.css'
+import { NavLink, useLocation  } from 'react-router-dom'
 
 const Navbar = () => {
+
+  const location = useLocation();
+
   return (
     <div className={navbar}>
       <nav className="navbar navbar-expand-lg" >
@@ -14,7 +19,10 @@ const Navbar = () => {
 
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a className={`${links}`} href="/">Home</a>
+                <NavLink className={`${links} ${location.pathname === "/" ? active : ""}`} to="/"> Home </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className={`${links} ${location.pathname === "/market" ? active : ""}`} to="/market">Market</NavLink>
               </li>
               <li className="nav-item">
                 <a className={`${links}`} href="#">Destacado</a>
@@ -34,8 +42,7 @@ const Navbar = () => {
             </ul>
               <button type="button" className="btn btn-danger mx-1 p-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i className={`bi bi-person ${icons}`}></i>    
-              </button>
-              
+              </button>              
           </div>
         </div>
       </nav>
