@@ -1,21 +1,21 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import {input, buttonCustom} from './LoginForm.module.css'
 import {loginForm, link} from '../loginModal.module.css'
 import axios from 'axios'
 
-const LoginForm = ({handleRegistrationClick}) => {
-  
-  const navigate = useNavigate();
-  const {register, handleSubmit, formState:{ errors }, watch} = useForm(); 
+const LoginForm = (props) => {
+  const { handleRegistrationClick, setUser } = props;
+  const {register, handleSubmit, formState:{ errors }, reset} = useForm(); 
 
   const onSubmit = handleSubmit(async (data, e) => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:8000/users/login", data);
-      console.log(response)
-     
+      localStorage.setItem("user", JSON.stringify(response.data));
+      setUser(response.data)
+      document.getElementById("closeModal").click()
+      reset()
     } catch (error) {
       console.log(error)
     }
@@ -66,7 +66,6 @@ const LoginForm = ({handleRegistrationClick}) => {
           }
         </div>
 
-     
         <div className='d-flex  justify-content-end pt-3'>
           <button type="submit" className={`mb-3 ${buttonCustom}`}>Enviar</button>
         </div>
@@ -75,7 +74,6 @@ const LoginForm = ({handleRegistrationClick}) => {
           <a className={link} onClick={handleRegistrationClick}>No tienes cuenta? Registrate!</a>
         </div>
 
-  
   </form> 
   )
 }

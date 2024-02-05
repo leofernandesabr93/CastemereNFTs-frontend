@@ -1,15 +1,16 @@
 import React from 'react'
 import Carrousel from '../../components/specific/carrousel/Carrousel'
-import { containerCustom } from './home.module.css'
-import LoginModal from '../../components/specific/loginModal/LoginModal'
+import { container1, container2 } from './home.module.css'
 
 const Home = () => {
   return (
-    <div className="container d-flex justify-content-center">
-      <div className={`row pt-5 ${containerCustom}`}>
-        <Carrousel/>
+
+      <div className={`container-fluid d-flex justify-content-center ${container1}`}>
+        <div className={`row pt-5 ${container2}`}>
+          <Carrousel/>
+        </div>
       </div>
-    </div>
+
   )
 }
 
