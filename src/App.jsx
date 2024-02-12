@@ -7,7 +7,7 @@ import Market from "./pages/market/Market";
 import SpecificProduct from "./pages/specificProduct/SpecificProduct";
 import { useState, useEffect } from "react";
 import Fav from "./pages/fav/Fav";
-import Cart from "./pages/cart/cart";
+import Cart from "./pages/cart/Cart";
 import SearchModal from "./components/specific/searchModal/SearchModal";
 import Footer from "./components/general/footer/Footer";
 
