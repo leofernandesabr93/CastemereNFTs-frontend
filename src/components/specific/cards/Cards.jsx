@@ -1,4 +1,3 @@
-import React from 'react'
 import { img, cardCustom, cardText} from '../../../pages/market/market.module.css'
 import { Link } from 'react-router-dom'
 import Pagination from '../pagination/Pagination'
