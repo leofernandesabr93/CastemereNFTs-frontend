@@ -3,6 +3,7 @@ import axios from "axios";
 import { img } from "../list/list.module.css";
 import { NavLink } from "react-router-dom";
 
+
 const CartList = ({ user, setUser, setCartItemCount, cartItemCount }) => {
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(false);
