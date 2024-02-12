@@ -5,81 +5,66 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { img, cardCustom, cardText, title} from './carrousel.module.css'
+import { img, cardText, title} from './carrousel.module.css'
+import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default () => {
+  const [allProducts, setAllProducts] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true)
+        const { data } = await axios.get(`https://castemerenfts-backend.onrender.com/products`);
+        setAllProducts(data.info.products);
+      } catch (error) {
+        //error
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
+
+  const destacados = allProducts?.filter(product => product.destacado);
+
   return (
     <>
       <h2 className={title}>Destacado</h2>
       <Swiper
-        // install Swiper modules
         spaceBetween={20}
         modules={[Navigation, Pagination]}
         navigation
         pagination={{ clickable: true }}
         breakpoints={{
           768: {
-            slidesPerView: 5,
+            slidesPerView: 4,
           },
           0: {
             slidesPerView: 2,
           },
         }}
       >
-        <SwiperSlide>
-          <div className={`card bg-dark ${cardCustom}`}>
-            <img src="https://picsum.photos/id/237/200/300" className={img} />
-            <div className="card-body">
-              <h5 className={`card-title text-white ${cardText}`}>Card title</h5>
-            <h5 className={`card-title text-success text-end ${cardText}`}>$20</h5>
-            </div>
+      {loading ? <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div> :  
+      <>
+      {destacados.map((product) => (
+      <SwiperSlide  key={product._id}>
+        <NavLink className='text-decoration-none' to={`/${product._id}`}>
+          <img src={`https://castemerenfts-backend.onrender.com/${product.image}`} className={img} />
+          <div className="card-body">
+            <h5 className={`card-title text-white ${cardText}`}>{product.name}</h5>
+            <h5 className={`card-title text-success text-end ${cardText}`}>{`$${product.price}`}</h5>
           </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`card bg-dark ${cardCustom}`}>
-            <img src="https://picsum.photos/id/237/200/300" className={img} />
-            <div className="card-body">
-              <h5 className={`card-title text-white ${cardText}`}>Card title</h5>
-            <h5 className={`card-title text-success text-end ${cardText}`}>$20</h5>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`card bg-dark ${cardCustom}`}>
-            <img src="https://picsum.photos/id/237/200/300" className={img} />
-            <div className="card-body">
-              <h5 className={`card-title text-white ${cardText}`}>Card title</h5>
-            <h5 className={`card-title text-success text-end ${cardText}`}>$20</h5>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`card bg-dark ${cardCustom}`}>
-            <img src="https://picsum.photos/id/237/200/300" className={img} />
-            <div className="card-body">
-              <h5 className={`card-title text-white ${cardText}`}>Card title</h5>
-            <h5 className={`card-title text-success text-end ${cardText}`}>$20</h5>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`card bg-dark ${cardCustom}`}>
-            <img src="https://picsum.photos/id/237/200/300" className={img} />
-            <div className="card-body">
-              <h5 className={`card-title text-white ${cardText}`}>Card title</h5>
-            <h5 className={`card-title text-success text-end ${cardText}`}>$20</h5>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`card bg-dark ${cardCustom}`}>
-            <img src="https://picsum.photos/id/237/200/300" className={img} />
-            <div className="card-body">
-              <h5 className={`card-title text-white ${cardText}`}>Card title</h5>
-            <h5 className={`card-title text-success text-end ${cardText}`}>$20</h5>
-            </div>
-          </div>
-        </SwiperSlide>
+        </NavLink>
+      </SwiperSlide>
+    ))}
+      </>
+      }
       </Swiper>
     </>
   );
