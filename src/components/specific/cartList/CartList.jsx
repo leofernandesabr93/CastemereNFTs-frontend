@@ -77,8 +77,10 @@ const CartList = ({ user, setUser, setCartItemCount, cartItemCount }) => {
       <div className="row">
         <h1 className="text-center pb-4 text-white fw-bold">Carrito</h1>
         {loading ? (
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
+          <div className="d-flex justify-content-center pb-5 pt-5">
+            <div className="spinner-border text-danger" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
           </div>
         ) : (
           <>
@@ -111,12 +113,12 @@ const CartList = ({ user, setUser, setCartItemCount, cartItemCount }) => {
                 </button>
               </div>
             ))}
+          {user?.loguedUser.userFounded.cart.length > 0 ? (
+            <h2 className="pt-3 text-success">Total: ${total}</h2>
+          ) : (
+            <h2 className="text-center text-white pt-5 pb-5">No hay productos agregados</h2>
+          )}
           </>
-        )}
-        {user?.loguedUser.userFounded.cart.length > 0 ? (
-          <h2 className="pt-3 text-success">Total: ${total}</h2>
-        ) : (
-          <h2 className="text-center text-white">No hay productos agregados</h2>
         )}
       </div>
     </div>
