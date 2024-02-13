@@ -1,6 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { input,buttonCustom } from "../loginModal/loginForm/loginForm.module.css";
+import {
+  input,
+  buttonCustom,
+} from "../loginModal/loginForm/loginForm.module.css";
 import { registerForm, link } from "../loginModal/loginModal.module.css";
 import axios from "axios";
 import { useState } from "react";
@@ -143,8 +146,10 @@ const RegisterForm = ({ handleLoginClick }) => {
 
       <div className="d-flex  justify-content-end pt-3">
         {loading ? (
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
+          <div className="d-flex justify-content-end">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
           </div>
         ) : (
           <button type="submit" className={`mb-3 ${buttonCustom}`}>

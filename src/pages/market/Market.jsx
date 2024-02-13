@@ -9,10 +9,12 @@ const Market = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [page, setPage] = useState("");
   const [allProducts, setAllProducts] = useState([]);
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setloading(true)
         const { data } = await axios.get(
           `https://castemerenfts-backend.onrender.com/products?${page}`
         );
@@ -20,6 +22,8 @@ const Market = () => {
         setTotalPages(data.info.totalPages);
       } catch (error) {
         //error
+      } finally {
+        setloading(false)
       }
     };
     fetchData();
@@ -38,6 +42,7 @@ const Market = () => {
           totalPages={totalPages}
           setPage={setPage}
           allProducts={allProducts}
+          loading={loading}
         />
       </div>
     </div>
